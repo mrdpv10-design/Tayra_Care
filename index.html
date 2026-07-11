@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Tayra Care: venta, cuidado, baño, grooming y bienestar para perros." />
+  <title>Tayra Care | Cuidado y venta para canes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary:#6c3df4;
+      --secondary:#ff5f8f;
+      --accent:#20d5b5;
+      --yellow:#ffd166;
+      --dark:#1f2340;
+      --text:#4d5068;
+      --light:#f8f7ff;
+      --white:#ffffff;
+      --shadow:0 18px 45px rgba(46, 35, 92, .15);
+      --radius:24px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Montserrat',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(108,61,244,.10), transparent 25%),
+        radial-gradient(circle at 90% 30%, rgba(255,95,143,.10), transparent 28%),
+        var(--light);
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .container{width:min(1120px,92%);margin:auto}
+
+    /* NAV */
+    header{
+      position:fixed;top:0;left:0;width:100%;z-index:1000;
+      background:rgba(255,255,255,.86);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(108,61,244,.10);
+    }
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--dark);font-size:1.2rem}
+    .logo-badge{width:46px;height:46px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:1.5rem;background:linear-gradient(135deg,var(--primary),var(--secondary));box-shadow:0 10px 25px rgba(108,61,244,.32)}
+    .logo span strong{color:var(--primary)}
+    .nav-links{display:flex;align-items:center;gap:26px;font-weight:600;font-size:.94rem}
+    .nav-links a{position:relative}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:3px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--secondary));transition:.3s}
+    .nav-links a:hover::after{width:100%}
+    .nav-cta{padding:12px 19px;border-radius:999px;color:white;background:linear-gradient(90deg,var(--primary),var(--secondary));box-shadow:0 10px 24px rgba(108,61,244,.28)}
+    .menu-btn{display:none;border:0;background:transparent;font-size:1.7rem;color:var(--dark);cursor:pointer}
+
+    /* HERO */
+    .hero{min-height:100vh;padding:130px 0 70px;display:flex;align-items:center;position:relative}
+    .hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(5px);z-index:-1;animation:float 6s ease-in-out infinite}
+    .hero::before{width:220px;height:220px;background:rgba(32,213,181,.14);top:12%;left:-70px}
+    .hero::after{width:280px;height:280px;background:rgba(255,95,143,.12);right:-90px;bottom:8%;animation-delay:1.5s}
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:55px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 14px;border-radius:999px;background:#fff;box-shadow:var(--shadow);font-size:.84rem;font-weight:700;color:var(--primary);margin-bottom:22px}
+    h1{font-size:clamp(2.7rem,6vw,5.2rem);line-height:1.02;color:var(--dark);letter-spacing:-2.5px}
+    h1 .script{font-family:'Pacifico',cursive;font-weight:400;color:var(--secondary);display:block;letter-spacing:0}
+    .hero p{font-size:1.08rem;line-height:1.8;margin:24px 0 30px;max-width:630px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px 22px;border-radius:999px;font-weight:700;transition:.3s;cursor:pointer;border:0}
+    .btn-primary{color:#fff;background:linear-gradient(90deg,var(--primary),var(--secondary));box-shadow:0 14px 28px rgba(108,61,244,.28)}
+    .btn-secondary{background:#fff;color:var(--dark);box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-4px) scale(1.02)}
+    .hero-card{position:relative;border-radius:42px;padding:18px;background:linear-gradient(145deg,#fff,rgba(255,255,255,.65));box-shadow:0 28px 70px rgba(46,35,92,.22)}
+    .hero-card img{width:100%;height:550px;object-fit:cover;border-radius:30px}
+    .floating-card{position:absolute;background:#fff;padding:15px 18px;border-radius:18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:10px;font-weight:700;color:var(--dark);animation:float 4s ease-in-out infinite}
+    .floating-card.one{left:-45px;top:18%}
+    .floating-card.two{right:-35px;bottom:13%;animation-delay:1.2s}
+    .bubble{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--accent),var(--primary))}
+
+    /* SECTIONS */
+    section{padding:90px 0}
+    .section-head{text-align:center;max-width:720px;margin:0 auto 48px}
+    .kicker{font-family:'Pacifico',cursive;color:var(--secondary);font-size:1.35rem}
+    h2{font-size:clamp(2rem,4vw,3.25rem);color:var(--dark);margin:8px 0 14px;line-height:1.15}
+    .section-head p{line-height:1.75}
+
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .service-card{background:#fff;padding:30px;border-radius:var(--radius);box-shadow:var(--shadow);position:relative;overflow:hidden;transition:.35s}
+    .service-card::before{content:"";position:absolute;inset:auto -35px -45px auto;width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,rgba(108,61,244,.10),rgba(255,95,143,.16))}
+    .service-card:hover{transform:translateY(-10px) rotate(-.5deg)}
+    .icon{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:1.8rem;color:#fff;background:linear-gradient(135deg,var(--primary),var(--secondary));margin-bottom:22px;box-shadow:0 12px 24px rgba(108,61,244,.24)}
+    .service-card:nth-child(2) .icon,.service-card:nth-child(5) .icon{background:linear-gradient(135deg,var(--accent),#18a6e1)}
+    .service-card:nth-child(3) .icon,.service-card:nth-child(6) .icon{background:linear-gradient(135deg,var(--yellow),#ff8c42)}
+    .service-card h3{color:var(--dark);font-size:1.25rem;margin-bottom:10px}
+    .service-card p{line-height:1.7;font-size:.94rem}
+
+    .about{background:linear-gradient(135deg,#271b58,#4e2fb7);color:#fff;position:relative;overflow:hidden}
+    .about::before{content:"🐾";position:absolute;font-size:15rem;opacity:.05;right:2%;top:-10%}
+    .about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+    .about-img{border-radius:32px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.25);transform:rotate(-2deg)}
+    .about-img img{height:480px;width:100%;object-fit:cover}
+    .about h2,.about p{color:#fff}
+    .about p{line-height:1.8;opacity:.9}
+    .features{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:28px}
+    .feature{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.10);padding:13px;border-radius:15px}
+
+    .products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .product{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);transition:.3s}
+    .product:hover{transform:translateY(-8px)}
+    .product-img{height:210px;overflow:hidden;position:relative}
+    .product-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+    .product:hover img{transform:scale(1.08)}
+    .tag{position:absolute;top:14px;left:14px;padding:7px 11px;border-radius:999px;background:var(--secondary);color:#fff;font-size:.72rem;font-weight:800}
+    .product-body{padding:20px}
+    .product h3{color:var(--dark);font-size:1.05rem;margin-bottom:8px}
+    .product p{font-size:.88rem;line-height:1.6}
+
+    .testimonials{background:linear-gradient(180deg,rgba(108,61,244,.06),rgba(255,255,255,.75))}
+    .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .quote{background:#fff;padding:28px;border-radius:24px;box-shadow:var(--shadow)}
+    .stars{color:#ffb703;letter-spacing:3px;margin-bottom:14px}
+    .quote p{line-height:1.75;font-size:.94rem}
+    .client{display:flex;align-items:center;gap:12px;margin-top:18px;font-weight:700;color:var(--dark)}
+    .avatar{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;background:linear-gradient(135deg,var(--primary),var(--secondary))}
+
+    .contact-wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:35px;background:#fff;padding:34px;border-radius:32px;box-shadow:var(--shadow)}
+    .contact-info{padding:24px;border-radius:24px;color:#fff;background:linear-gradient(145deg,var(--primary),#39209a);position:relative;overflow:hidden}
+    .contact-info::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.08);right:-55px;bottom:-55px}
+    .contact-info h3{font-size:1.8rem;margin-bottom:14px}
+    .contact-info p{line-height:1.7;opacity:.9}
+    .info-list{margin-top:26px;display:grid;gap:16px}
+    .info-item{display:flex;align-items:center;gap:12px}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:15px;padding:8px}
+    .full{grid-column:1/-1}
+    input,textarea,select{width:100%;border:1px solid #e7e5f3;background:#fbfaff;padding:14px 15px;border-radius:14px;font:inherit;outline:none;transition:.25s}
+    input:focus,textarea:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(108,61,244,.10)}
+    textarea{min-height:125px;resize:vertical}
+
+    footer{padding:45px 0 25px;background:#17192d;color:#d7d8e7}
+    .footer-grid{display:grid;grid-template-columns:1.2fr .8fr .8fr;gap:35px}
+    footer h4{color:#fff;margin-bottom:15px}
+    footer p,footer a{font-size:.92rem;line-height:1.8}
+    .socials{display:flex;gap:12px;margin-top:18px}
+    .social{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:rgba(255,255,255,.08);transition:.3s}
+    .social:hover{background:linear-gradient(135deg,var(--primary),var(--secondary));transform:translateY(-4px)}
+    .copy{text-align:center;margin-top:34px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:.85rem}
+
+    .whatsapp{position:fixed;right:22px;bottom:22px;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:#25D366;color:#fff;font-size:1.75rem;box-shadow:0 15px 30px rgba(37,211,102,.35);z-index:1000;animation:pulse 2s infinite}
+    .reveal{opacity:0;transform:translateY(35px);transition:.8s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+    @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45)}70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+    @media(max-width:900px){
+      .menu-btn{display:block}
+      .nav-links{position:absolute;top:78px;left:4%;right:4%;display:none;flex-direction:column;align-items:stretch;background:#fff;padding:22px;border-radius:20px;box-shadow:var(--shadow)}
+      .nav-links.active{display:flex}
+      .hero-grid,.about-grid,.contact-wrap{grid-template-columns:1fr}
+      .hero{text-align:center;padding-top:120px}
+      .hero p{margin-left:auto;margin-right:auto}
+      .hero-actions{justify-content:center}
+      .hero-card{max-width:560px;margin:auto}
+      .hero-card img{height:480px}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .products-grid{grid-template-columns:repeat(2,1fr)}
+      .testimonial-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr 1fr}
+    }
+    @media(max-width:600px){
+      h1{letter-spacing:-1.5px}
+      section{padding:70px 0}
+      .services-grid,.products-grid,.features,.footer-grid,form{grid-template-columns:1fr}
+      .full{grid-column:auto}
+      .hero-card img{height:400px}
+      .floating-card{font-size:.8rem;padding:11px}
+      .floating-card.one{left:-8px}.floating-card.two{right:-6px}
+      .contact-wrap{padding:18px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo"><span class="logo-badge">🐾</span><span><strong>Tayra</strong> Care</span></a>
+      <button class="menu-btn" aria-label="Abrir menú" onclick="toggleMenu()">☰</button>
+      <nav class="nav-links" id="navLinks">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#productos">Productos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <a class="nav-cta" href="https://wa.me/51999999999" target="_blank">Reserva ahora</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <div class="eyebrow">🐶 Amor, salud y estilo para tu mejor amigo</div>
+          <h1>Todo lo que tu perro necesita, con <span class="script">mucho cariño.</span></h1>
+          <p>En Tayra Care ofrecemos productos, baño, grooming, cuidado y atención personalizada para que cada can se sienta feliz, limpio y saludable.</p>
+          <div class="hero-actions">
+            <a href="#servicios" class="btn btn-primary">Ver servicios →</a>
+            <a href="https://wa.me/51999999999" target="_blank" class="btn btn-secondary">💬 Escribir por WhatsApp</a>
+          </div>
+        </div>
+        <div class="hero-card reveal">
+          <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=1000&q=85" alt="Perro feliz atendido por Tayra Care">
+          <div class="floating-card one"><span class="bubble">✂️</span>Grooming profesional</div>
+          <div class="floating-card two"><span class="bubble">💜</span>Atención con amor</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="kicker">Nuestros servicios</div>
+          <h2>Cuidado integral para tu engreído</h2>
+          <p>Servicios pensados para el bienestar, la higiene y la felicidad de perros de todas las razas y tamaños.</p>
+        </div>
+        <div class="services-grid">
+          <article class="service-card reveal"><div class="icon">🛁</div><h3>Baño y limpieza</h3><p>Baño completo, limpieza de oídos, corte de uñas y secado profesional con productos adecuados para su piel.</p></article>
+          <article class="service-card reveal"><div class="icon">✂️</div><h3>Grooming y peluquería</h3><p>Cortes personalizados según raza, tamaño y estilo, siempre cuidando la comodidad de tu mascota.</p></article>
+          <article class="service-card reveal"><div class="icon">🦴</div><h3>Venta de accesorios</h3><p>Collares, correas, camas, juguetes, ropa y accesorios seleccionados para cada etapa de su vida.</p></article>
+          <article class="service-card reveal"><div class="icon">🥣</div><h3>Alimentos y snacks</h3><p>Opciones de alimentación, premios y snacks para consentirlo y complementar su rutina diaria.</p></article>
+          <article class="service-card reveal"><div class="icon">🏡</div><h3>Guardería canina</h3><p>Un espacio seguro y supervisado donde tu perro podrá jugar, socializar y recibir atención.</p></article>
+          <article class="service-card reveal"><div class="icon">🚕</div><h3>Recojo y entrega</h3><p>Servicio coordinado de traslado para facilitar la atención de tu mascota desde la comodidad de tu hogar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="nosotros">
+      <div class="container about-grid">
+        <div class="about-img reveal"><img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=1000&q=85" alt="Cuidado profesional de perros"></div>
+        <div class="reveal">
+          <div class="kicker">Conoce Tayra Care</div>
+          <h2>Más que un servicio, una experiencia feliz</h2>
+          <p>Tratamos a cada perro con paciencia, respeto y cariño. Nuestro objetivo es que se sienta seguro durante toda su visita y que vuelva a casa feliz, limpio y renovado.</p>
+          <div class="features">
+            <div class="feature">✅ Atención personalizada</div>
+            <div class="feature">✅ Productos de calidad</div>
+            <div class="feature">✅ Ambiente seguro</div>
+            <div class="feature">✅ Personal comprometido</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="productos">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">Tienda canina</div><h2>Productos para consentirlo</h2><p>Una selección de artículos útiles, cómodos y divertidos para tu mejor amigo.</p></div>
+        <div class="products-grid">
+          <article class="product reveal"><div class="product-img"><span class="tag">Favorito</span><img src="https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=700&q=80" alt="Alimento para perros"></div><div class="product-body"><h3>Alimentos premium</h3><p>Opciones según tamaño, edad y necesidad.</p></div></article>
+          <article class="product reveal"><div class="product-img"><span class="tag">Nuevo</span><img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=700&q=80" alt="Accesorios para perros"></div><div class="product-body"><h3>Collares y correas</h3><p>Diseños resistentes, cómodos y modernos.</p></div></article>
+          <article class="product reveal"><div class="product-img"><span class="tag">Diversión</span><img src="https://images.unsplash.com/photo-1591946614720-90a587da4a36?auto=format&fit=crop&w=700&q=80" alt="Juguetes para perros"></div><div class="product-body"><h3>Juguetes interactivos</h3><p>Estimulación, juego y entretenimiento diario.</p></div></article>
+          <article class="product reveal"><div class="product-img"><span class="tag">Confort</span><img src="https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=700&q=80" alt="Camas para perros"></div><div class="product-body"><h3>Camas y descanso</h3><p>Comodidad para dormir y relajarse mejor.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">Clientes felices</div><h2>Lo que dicen de Tayra Care</h2></div>
+        <div class="testimonial-grid">
+          <article class="quote reveal"><div class="stars">★★★★★</div><p>“Mi perrita regresó hermosa, tranquila y con un aroma delicioso. La atención fue excelente.”</p><div class="client"><span class="avatar">MP</span>María y Luna</div></article>
+          <article class="quote reveal"><div class="stars">★★★★★</div><p>“Muy pacientes con mi perro, que suele ponerse nervioso. Se nota que aman a los animales.”</p><div class="client"><span class="avatar">CR</span>Carlos y Rocky</div></article>
+          <article class="quote reveal"><div class="stars">★★★★★</div><p>“Encontré productos bonitos y además pude reservar el baño por WhatsApp. Muy práctico.”</p><div class="client"><span class="avatar">AL</span>Ana y Toby</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <div class="container">
+        <div class="section-head reveal"><div class="kicker">Contáctanos</div><h2>Agenda una cita para tu mascota</h2><p>Completa el formulario o escríbenos directamente por WhatsApp.</p></div>
+        <div class="contact-wrap reveal">
+          <div class="contact-info">
+            <h3>¡Conversemos!</h3>
+            <p>Estamos listos para ayudarte a elegir el mejor servicio o producto para tu engreído.</p>
+            <div class="info-list">
+              <div class="info-item">📍 Lima, Perú</div>
+              <div class="info-item">📞 +51 999 999 999</div>
+              <div class="info-item">✉️ contacto@tayracare.com</div>
+              <div class="info-item">🕘 Lun–Sáb: 9:00 a.m. – 7:00 p.m.</div>
+            </div>
+          </div>
+          <form onsubmit="sendWhatsApp(event)">
+            <input id="name" type="text" placeholder="Tu nombre" required>
+            <input id="phone" type="tel" placeholder="Tu teléfono" required>
+            <input id="pet" type="text" placeholder="Nombre de tu mascota" required>
+            <select id="service" required><option value="">Selecciona un servicio</option><option>Baño y limpieza</option><option>Grooming y peluquería</option><option>Compra de productos</option><option>Guardería canina</option><option>Recojo y entrega</option></select>
+            <textarea id="message" class="full" placeholder="Cuéntanos qué necesitas"></textarea>
+            <button class="btn btn-primary full" type="submit">Enviar solicitud por WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="logo" style="color:white"><span class="logo-badge">🐾</span><span><strong>Tayra</strong> Care</span></div><p style="margin-top:14px">Bienestar, belleza y productos para perros felices.</p><div class="socials"><a class="social" href="https://facebook.com" target="_blank" aria-label="Facebook">f</a><a class="social" href="https://instagram.com" target="_blank" aria-label="Instagram">◎</a><a class="social" href="https://tiktok.com" target="_blank" aria-label="TikTok">♪</a><a class="social" href="https://wa.me/51999999999" target="_blank" aria-label="WhatsApp">☏</a></div></div>
+        <div><h4>Enlaces</h4><p><a href="#inicio">Inicio</a><br><a href="#servicios">Servicios</a><br><a href="#productos">Productos</a><br><a href="#contacto">Contacto</a></p></div>
+        <div><h4>Servicios</h4><p>Baño canino<br>Grooming<br>Guardería<br>Venta de accesorios</p></div>
+      </div>
+      <div class="copy">© <span id="year"></span> Tayra Care. Todos los derechos reservados.</div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/51999999999" target="_blank" aria-label="WhatsApp">☏</a>
+
+  <script>
+    const navLinks = document.getElementById('navLinks');
+    function toggleMenu(){ navLinks.classList.toggle('active'); }
+    document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('active')));
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('visible'); });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function sendWhatsApp(e){
+      e.preventDefault();
+      const name=document.getElementById('name').value;
+      const phone=document.getElementById('phone').value;
+      const pet=document.getElementById('pet').value;
+      const service=document.getElementById('service').value;
+      const message=document.getElementById('message').value;
+      const text=`Hola Tayra Care, soy ${name}. Mi teléfono es ${phone}. Mi mascota se llama ${pet}. Estoy interesada(o) en: ${service}. ${message}`;
+      window.open(`https://wa.me/51999999999?text=${encodeURIComponent(text)}`,'_blank');
+    }
+  </script>
+</body>
+</html>
